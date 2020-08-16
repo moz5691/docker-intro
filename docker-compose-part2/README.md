@@ -1,0 +1,95 @@
+## Two (multiple) Dockerfiles
+
+`context`: Use this to specify the directory of Dockerfile.
+`dockerfile`: Specify alternate name of Dockerfile.
+`depends_on`: Tells docker-composer about all the dependencies of a service. Docker-compose will start dependencies first and the main service afterward.
+
+```docker
+version: "3"
+services:
+  web:
+    # Path to dockerfile.
+    # '.' represents the current directory in which
+    # docker-compose.yml is present.
+    build: .
+
+    # Mapping of container port to host
+
+    ports:
+      - "5001:5000"
+    # Mount volume
+    volumes:
+      - ".:/code"
+
+    # Link database container to app container
+    # for rechability.
+    links:
+      - "database:backenddb"
+    depends_on:
+      - database
+
+  database:
+    # image to fetch from docker hub
+    build:
+      context: ./db
+      dockerfile: Dockerfile-db
+    #image: mysql/mysql-server:5.7
+
+    # Environment variables for startup script
+    # container will use these variables
+    # to start the container with these define variables.
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_USER=testuser"
+      - "MYSQL_PASSWORD=admin123"
+      - "MYSQL_DATABASE=backend"
+    # Mount init.sql file to automatically run
+    # and create tables for us.
+    # everything in docker-entrypoint-initdb.d folder
+    # is executed as soon as container is up nd running.
+    volumes:
+      - "./db/init.sql:/docker-entrypoint-initdb.d/init.sql"
+
+```
+
+## Using .env file
+
+Swap `environment` with `env_file` as following.
+
+```docker
+  database:
+    # image to fetch from docker hub
+    build:
+      context: ./db
+      dockerfile: Dockerfile-db
+    #image: mysql/mysql-server:5.7
+
+    # Environment variables for startup script
+    # container will use these variables
+    # to start the container with these define variables.
+    env_file:
+      - ./.env
+    # Mount init.sql file to automatically run
+    # and create tables for us.
+    # everything in docker-entrypoint-initdb.d folder
+    # is executed as soon as container is up nd running.
+    volumes:
+      - "./db/init.sql:/docker-entrypoint-initdb.d/init.sql"
+```
+
+`.env` is a separate file. Useful if you have a large number environmental variables or you do not want to modify docker-compose.yml for updating/maintaining environment variables
+
+```sh
+MYSQL_ROOT_PASSWORD=root
+MYSQL_USER=testuser
+MYSQL_PASSWORD=admin123
+MYSQL_DATABASE=backend
+```
+
+Note that if you have the same environmental variables in multiple places, here is the priority used.
+
+- docker-compose.yml file
+- shell environment variables
+- environment file
+- Dockerfile
+- variable is undefined
