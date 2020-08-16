@@ -114,21 +114,15 @@ http://localhost:5001
 
 ## Docker commands
 
-```docker
-FROM : Which base image to use?
-
-WORKDIR : Working directory for Docker commands like CMD, RUN
-
-ENV : Environmental variable required for app
-
-COPY : Copies file from source to destination &nbsp; `COPY <SOURCE> <DESTINATION>`
-
-RUN : Execute any commands in a new layer on top of the current image.
-
-CMD : Default command user can override.
-
-ENTRYPOINT : Similar to CMD. Preferred when you want to define a container with a specific executable.
-```
+| Command      | Action                                                                                    |
+| ------------ | ----------------------------------------------------------------------------------------- |
+| `FROM`       | Which base image to use?                                                                  |
+| `WORKDIR`    | Working directory for Docker commands like CMD, RUN                                       |
+| `ENV`        | Environmental variable required for app                                                   |
+| `COPY`       | Copies file from source to destination &nbsp; `COPY <SOURCE> <DESTINATION>`               |
+| `RUN`        | Execute any commands in a new layer on top of the current image.                          |
+| `CMD`        | Default command user can override.                                                        |
+| `ENTRYPOINT` | Similar to CMD. Preferred when you want to define a container with a specific executable. |
 
 ---
 
