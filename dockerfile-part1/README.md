@@ -6,13 +6,15 @@ Docker uses a client-server architecture. The Docker client talks to the Docker 
 
 [Source: https://docs.docker.com/get-started/overview/]
 
+---
+
 ## Install Docker
 
-Sign in and follow intruction
+- Sign in and follow intruction
 
 https://hub.docker.com/?overlay=onboarding
 
-To verify Docker works in your machine, run the following. If you see Docker pull hello-world and run it, Docker works fine in your system.
+- To verify Docker works in your machine, run the following. If you see Docker pull hello-world and run it, Docker works fine in your system.
 
 ```sh
 $ docker run hello-world
@@ -20,6 +22,8 @@ Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
 0e03bdcc26d7: Pull complete
 ```
+
+---
 
 ## Running APP with CLI
 
@@ -48,6 +52,8 @@ $ flask run
 > set FLASK_APP = "app.py"
 > flask run
 ```
+
+---
 
 ## Running APP in Docker
 
@@ -104,6 +110,8 @@ $ docker run -p 5001:5000 flask_app:1.0
 http://localhost:5001
 ```
 
+---
+
 ## Docker commands
 
 ```docker
@@ -121,6 +129,8 @@ CMD : Default command user can override.
 
 ENTRYPOINT : Similar to CMD. Preferred when you want to define a container with a specific executable.
 ```
+
+---
 
 ## Useful Access Commands
 
@@ -147,6 +157,8 @@ $ docker logs -f <CONTAINER ID>
 ```sh
 $ docker logs <CONTAINER ID> > output.txt
 ```
+
+---
 
 ## Troubleshooting in Docker
 
@@ -180,6 +192,8 @@ Are you sure you want to continue? [y/N] y
 ```sh
 $ docker inspect <Container/Image/Network ID>
 ```
+
+---
 
 ## Pushing an app image to Docker Hub (Registry)
 

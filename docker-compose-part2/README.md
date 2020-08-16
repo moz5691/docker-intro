@@ -1,8 +1,12 @@
 ## Two (multiple) Dockerfiles
 
-`context`: Use this to specify the directory of Dockerfile.
-`dockerfile`: Specify alternate name of Dockerfile.
-`depends_on`: Tells docker-composer about all the dependencies of a service. Docker-compose will start dependencies first and the main service afterward.
+---
+
+| Command      | Action                                                                                                                                      |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `context`    | Use this to specify the directory of Dockerfile.                                                                                            |
+| `dockerfile` | Specify alternate name of Dockerfile.                                                                                                       |
+| `depends_on` | Tells docker-composer about all the dependencies of a service. Docker-compose will start dependencies first and the main service afterward. |
 
 ```docker
 version: "3"
@@ -52,6 +56,8 @@ services:
 
 ```
 
+---
+
 ## Using .env file
 
 Swap `environment` with `env_file` as following.
@@ -77,7 +83,7 @@ Swap `environment` with `env_file` as following.
       - "./db/init.sql:/docker-entrypoint-initdb.d/init.sql"
 ```
 
-`.env` is a separate file. Useful if you have a large number environmental variables or you do not want to modify docker-compose.yml for updating/maintaining environment variables
+- `.env` is a separate file. Useful if you have a large number environmental variables or you do not want to modify docker-compose.yml for updating/maintaining environment variables
 
 ```sh
 MYSQL_ROOT_PASSWORD=root

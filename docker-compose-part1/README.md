@@ -1,10 +1,11 @@
 ## To start docker-compose
 
-`docker-compose` : every commands starts with this.
-
-`docker-compose build` : buid images of mentioned services in docker-compose.yml file
-`docker-compose images` : lists images built using the current docker-compose file
-`docker-compose run`: creates containers from services mentioned in docker-compose file. it can run a specific service.
+| Command                 | Action                                                                                            |
+| ----------------------- | ------------------------------------------------------------------------------------------------- |
+| `docker-compose`        | every commands starts with this.                                                                  |
+| `docker-compose build`  | buid images of mentioned services in docker-compose.yml file                                      |
+| `docker-compose images` | lists images built using the current docker-compose file                                          |
+| `docker-compose run`    | creates containers from services mentioned in docker-compose file. it can run a specific service. |
 
 ```sh
 $ docker-compose run web
@@ -14,37 +15,37 @@ Starting 7001788f31a9_docker_database_1 ... done
 Note: "web" depends on "database" which is the reason "database" started. Otherwise, "database" will not start.
 ```
 
-`docker-compose up`: Does `docker-compose build` and `docker-compose run` . Force to rebuild `docker-compose up --build`.
+| Command                  | Action                                                                                               |
+| ------------------------ | ---------------------------------------------------------------------------------------------------- |
+| `docker-compose up`      | Does `docker-compose build` and `docker-compose run` . Force to rebuild `docker-compose up --build`. |
+| `docker-compose stop`    | Force to stop the running containers of the specified services in docker-compose file.               |
+| `docker-compose rm`      | Removes the containers mentioned in docker-compose file                                              |
+| `docker-compose start`   | Starts any stopped containers of the services.                                                       |
+| `docker-compose restart` | Restarts all the containers of the services.                                                         |
+| `docker-compose ps`      | Lists all the containers for servcies in the current docker-compose file.                            |
+| `docker-compose down`    | Stops all the services and clean up the containers in docker-compose file.                           |
+| `docker-compose logs`    | Prints all the logs created by all the servcies. Use `-f` flag to print real-time logs.              |
 
-`docker-compose stop` : Force to stop the running containers of the specified services in docker-compose file.
+---
 
-`docker-compose rm` : Removes the containers mentioned in docker-compose file
-
-`docker-compose start` : Starts any stopped containers of the services.
-
-`docker-compose restart`: Restarts all the containers of the services.
-
-`docker-compose ps`: Lists all the containers for servcies in the current docker-compose file.
-
-`docker-compose down`: Stops all the services and clean up the containers in docker-compose file.
-
-`docker-compose logs`: Prints all the logs created by all the servcies. Use `-f` flag to print real-time logs.
+<br/>
 
 ## Explanation of docker-compose yaml file
 
-- version : Version of docker-compose file. Use the latest as it is backward compatiable.
-- services: Defines different containers
-- web: This can be anything. Name of container created by docker-compose
-- build: Specifies the location of Dockerfile
-- ports : Map to expose the container ports to the host machine
-- volumes: Attaching code files directory to the containers.
-- links: Define extra aliases by which a service is reachable from another service. "database" is reachabel from "web" at the hostnames "database" and "backenddb".
-- image: If there is no Dockerfile and want to run pre-built image, specify the image location.
-- environment: Environmental variables need to be set up in the container.
-- depends_on: Express dependencies between sevices. In the following "database" is started before "web".
+| Command       | Action                                                                                                                                                     |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `version`     | Version of docker-compose file. Use the latest as it is backward compatiable.                                                                              |
+| `services`    | Defines different containers                                                                                                                               |
+| `web`         | This can be anything. Name of container created by docker-compose                                                                                          |
+| `build`       | Specifies the location of Dockerfile                                                                                                                       |
+| `ports`       | Map to expose the container ports to the host machine                                                                                                      |
+| `volumes`     | Attaching code files directory to the containers.                                                                                                          |
+| `links`       | Define extra aliases by which a service is reachable from another service. "database" is reachabel from "web" at the hostnames "database" and "backenddb". |
+| `image`       | If there is no Dockerfile and want to run pre-built image, specify the image location.                                                                     |
+| `environment` | Environmental variables need to be set up in the container.                                                                                                |
+| `depends_on`  | Express dependencies between sevices. In the following "database" is started before "web".                                                                 |
 
 ```docker
-
 version: "3.7"
 services:
   web:
@@ -86,5 +87,4 @@ services:
     # is executed as soon as container is up nd running.
     volumes:
       - "./db/init.sql:/docker-entrypoint-initdb.d/init.sql"
-
 ```
