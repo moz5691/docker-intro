@@ -1,5 +1,18 @@
 ## To start docker-compose
 
+- Run docker-compose to start app
+
+```sh
+$ cd project
+$ docker-compose up --build
+```
+
+- Open browser
+
+```sh
+http://localhost:5001
+```
+
 | Command                 | Action                                                                                            |
 | ----------------------- | ------------------------------------------------------------------------------------------------- |
 | `docker-compose`        | every commands starts with this.                                                                  |

@@ -9,7 +9,7 @@ services:
     # Mapping of container port to host
 
     ports:
-      - "5000:5000"
+      - "5001:5000"
     # Mount volume
     volumes:
       - ".:/code"
