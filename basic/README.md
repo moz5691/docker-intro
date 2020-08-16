@@ -20,13 +20,13 @@
 
 ## What it Docker?
 
-    Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. All containers are run by a single operating system kernel and therefore use fewer resources than virtual machines. [Wikiepdia]
+`Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. All containers are run by a single operating system kernel and therefore use fewer resources than virtual machines. [Wikiepdia]`
 
 ---
 
 ## How Docker is different from Virtual Machine?
 
-    Docker is software used for Virtualization to enable multiple Operating systems to run on the same host. This is the Hypervisors used to create a virtual machine, namely ESXi. On the contrary, this process takes place at the system-level in Docker. As you can see the difference in the image below, the Docker container runs on the hypervisor and above the Operating system. This helps you increase efficiency. In addition, we can run more containers on the same infrastructure than we can run multiple virtual machines because containers consume less resources.
+`Docker is software used for Virtualization to enable multiple Operating systems to run on the same host. This is the Hypervisors used to create a virtual machine, namely ESXi. On the contrary, this process takes place at the system-level in Docker. As you can see the difference in the image below, the Docker container runs on the hypervisor and above the Operating system. This helps you increase efficiency. In addition, we can run more containers on the same infrastructure than we can run multiple virtual machines because containers consume less resources.`
 
 &nbsp;&nbsp; ![](https://www.tayfundeger.com/wp-content/uploads/Docker.png)
 Source https://www.tayfundeger.com/what-is-docker.html
